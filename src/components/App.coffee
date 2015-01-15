@@ -18,8 +18,8 @@ App = React.createClass(
     ])
 
   loadUsersFromServer: ->
-      .done (data)=> @setState users: data
     $.getJSON('http://js-assessment-backend.herokuapp.com/users.json')
+      .done (data)=> @setState users: _.sortBy(data, 'id')
       .fail (error)=> console.log error
 )
 
