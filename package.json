@@ -1,0 +1,37 @@
+{
+  "name": "js-assesment-react",
+  "version": "0.0.1",
+  "repository": "https://github.com/trekdemo/dina-frontend-assessment-react",
+  "author": "Gergő Sulymosi",
+
+  "main": "src/main.coffee",
+
+  "dependencies": {
+    "react": "^0.12.2",
+    "react-router": "^0.11.6"
+  },
+  "devDependencies": {
+    "browserify":  "^6.2.0",
+    "watchify":    "^2.1.1",
+    "coffeeify":   "1.0.0",
+    "envify":      "^3.0.0",
+    "uglify-js":   "~2.4.15",
+    "jest-cli":    "~0.1.17"
+  },
+
+  "scripts": {
+    "start": "watchify -o bin/bundle.js -v -d .",
+    "build": "NODE_ENV=production browserify . | uglifyjs -cm > bin/bundle.min.js",
+    "test": "jest"
+  },
+  "browserify": {
+    "extension": [".coffee", ".js"],
+    "transform": [
+      "coffeeify",
+      "envify"
+    ]
+  },
+  "jest": {
+    "rootDir": "./src"
+  }
+}
