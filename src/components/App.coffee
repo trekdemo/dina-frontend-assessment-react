@@ -23,6 +23,16 @@ App = React.createClass(
       .fail (error)=> console.log error
 
   updateUserStatus: (user, new_status)->
+    $.ajax(
+      user.url,
+      method: 'PUT'
+      dataType: 'json'
+      data: {user: {status: new_status}}
+    )
+      .done (data)=> @loadUsersFromServer()
+      .fail (error)=> console.log error
+
+
 )
 
 module.exports = App
