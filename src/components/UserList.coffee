@@ -20,7 +20,7 @@ PaginationLinks = React.createFactory(React.createClass(
 
 UserList = React.createClass(
   getDefaultProps: ->
-    {collection: [], perPage: 10}
+    {collection: [], perPage: 10, onStatusChange: (->)}
 
   getInitialState: ->
     {page: 0}
@@ -28,7 +28,7 @@ UserList = React.createClass(
   render: ->
     {div} = React.DOM
     (div {}, [
-      (UserTable {users: @_paginatedCollection()}),
+      (UserTable {users: @_paginatedCollection(), onStatusChange: @props.onStatusChange}),
       (PaginationLinks {perPage: @props.perPage, total: @props.collection.length, currentPage: @state.page, onClick: @_handlePageLink})
     ])
 

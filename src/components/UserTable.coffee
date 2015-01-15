@@ -2,6 +2,9 @@ React = require('react')
 UserRow = React.createFactory(require('./UserRow.coffee'))
 
 UserTable = React.createClass(
+  getDefaultProps: ->
+    {users: [], onStatusChange: (->)}
+
   render: ->
     {table, tbody, tr, th, td} = React.DOM
 
@@ -15,8 +18,8 @@ UserTable = React.createClass(
           (th {}, 'Created at')
           (th {}, 'Updated at')
         ])
-        (@props.users.map (user, i)->
-          (UserRow {key: "user_#{user.id}", user: user, index: i}))
+        (@props.users.map (user, i)=>
+          (UserRow {key: "user_#{user.id}", user: user, index: i, onStatusChange: @props.onStatusChange}))
       ])
     ])
 )
