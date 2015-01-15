@@ -3,7 +3,7 @@ React = require('react')
 UserRow = React.createClass(
   render: ->
     {tr, td} = React.DOM
-    (tr {}, [
+    (tr {className: "user-status-#{@props.user.status}"}, [
       (td {}, @props.user.id),
       (td {}, @props.user.first_name),
       (td {}, @props.user.last_name),
