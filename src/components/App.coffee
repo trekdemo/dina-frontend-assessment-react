@@ -1,5 +1,6 @@
 React  = require 'react'
-getJSON = require('jquery').getJSON
+_ = require 'lodash'
+$ = require('jquery')
 UserList = React.createFactory(require('./UserList.coffee'))
 
 App = React.createClass(
@@ -17,8 +18,8 @@ App = React.createClass(
     ])
 
   loadUsersFromServer: ->
-    getJSON('http://js-assessment-backend.herokuapp.com/users.json')
       .done (data)=> @setState users: data
+    $.getJSON('http://js-assessment-backend.herokuapp.com/users.json')
       .fail (error)=> console.log error
 )
 
